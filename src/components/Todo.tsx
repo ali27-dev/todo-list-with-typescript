@@ -4,9 +4,10 @@ import "./TodoStyle.css";
 interface TodoProps {
   todos: string[];
   addTodo: (todo: string) => void;
+  setTodos: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-function Todo({ todos, addTodo }: TodoProps) {
+function Todo({ todos, addTodo, setTodos }: TodoProps) {
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleAddTodo = () => {
@@ -17,9 +18,9 @@ function Todo({ todos, addTodo }: TodoProps) {
   };
 
   function handleDeleteTodo(index: number) {
-    // Implement delete functionality here
-    todos.splice(index, 1);
-    addTodo([...todos]);
+    // create a new array (do not mutate props) and update via the provided setter
+    const updated = todos.filter((_, i) => i !== index);
+    setTodos(updated);
   }
 
   return (

@@ -9,7 +9,7 @@ function App() {
   };
   return (
     <>
-      <Todo todos={todos} addTodo={addTodo} />
+      <Todo todos={todos} addTodo={addTodo} setTodos={setTodos} />
     </>
   );
 }
