@@ -1,12 +1,17 @@
-import './App.css'
+import React, { useState } from "react";
+import Todo from "./components/Todo";
 
 function App() {
+  const [todos, setTodos] = useState<string[]>([]);
 
+  const addTodo = (todo: string) => {
+    setTodos([...todos, todo]);
+  };
   return (
     <>
-     <h1>Hello World!</h1>
+      <Todo todos={todos} addTodo={addTodo} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
