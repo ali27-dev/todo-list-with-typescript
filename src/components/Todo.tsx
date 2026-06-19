@@ -24,28 +24,45 @@ function Todo({ todos, addTodo, setTodos }: TodoProps) {
   }
 
   return (
-    <div>
+    <div className="todo-container">
       <h1 className="h1">Todo Item</h1>
-      <input
-        className="input"
-        type="text"
-        placeholder="add your todo"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
-      <button className="button" onClick={handleAddTodo}>
-        Add todo
-      </button>
+
+      <div className="input-row">
+        <input
+          className="input"
+          type="text"
+          placeholder="Add your todo"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <button className="button add" onClick={handleAddTodo}>
+          Add
+        </button>
+      </div>
+
       <ul className="todos-ul">
         {todos.map((todo, index) => (
-          <>
-            <input type="checkbox" />
-            <li key={index}>{todo}</li>
-            <button className="button" onClick={() => handleDeleteTodo(index)}>
-              delete
+          <li key={index} className="todo-item">
+            <label className="todo-label">
+              <input
+                type="checkbox"
+                className="todo-checkbox"
+                aria-label={`complete ${todo}`}
+              />
+              <span className="todo-text">{todo}</span>
+            </label>
+            <button
+              className="button delete"
+              onClick={() => handleDeleteTodo(index)}
+              aria-label={`delete ${todo}`}
+            >
+              Delete
             </button>
-          </>
+          </li>
         ))}
+        <button className="button delete" onClick={() => setTodos([])}>
+          Delete All
+        </button>
       </ul>
     </div>
   );
