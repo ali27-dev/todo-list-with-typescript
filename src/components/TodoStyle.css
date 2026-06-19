@@ -1,34 +1,133 @@
+/* ...existing code... */
+.todo-container {
+  max-width: 640px;
+  margin: 28px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(16, 24, 40, 0.06);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+}
+
 .h1 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 14px 0;
+  color: #0f172a;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 12px;
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #e6e9ef;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.12);
 }
 
 .button {
-  padding: 8px 12px;
-  background-color: #007bff;
+  padding: 10px 14px;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
 }
 
+.button.add {
+  background: linear-gradient(180deg, #2563eb, #1e40af);
+  min-width: 92px;
+}
+
+.button.delete {
+  background: #ef4444;
+  padding: 8px 10px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
+/* list */
 .todos-ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.todos-ul li {
-  padding: 8px;
-  border-bottom: 1px solid #eee;
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: background 0.12s ease, transform 0.08s ease;
+  background: #fff;
 }
-.todos-ul li:last-child {
-  border-bottom: none;
+
+.todo-item:hover {
+  background: #fbfdff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
 }
+
+.todo-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  accent-color: #2563eb;
+}
+
+.todo-text {
+  font-size: 15px;
+  color: #0f172a;
+  word-break: break-word;
+}
+
+/* small screens */
+@media (max-width: 520px) {
+  .todo-container {
+    margin: 18px;
+    padding: 16px;
+  }
+  .input-row {
+    flex-direction: column;
+  }
+  .button.add {
+    width: 100%;
+  }
+  .todo-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .button.delete {
+    align-self: flex-end;
+    margin-top: 8px;
+    width: auto;
+  }
+}
+/* ...existing code... */
